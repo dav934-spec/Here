@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Oliver ❤️</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital@1&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    overflow: hidden;
+}
+
+.card {
+    background: rgba(255,255,255,0.15);
+    padding: 30px;
+    border-radius: 25px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+}
+
+.hidden { display: none; }
+
+input, button {
+    width: 100%;
+    padding: 12px;
+    border-radius: 25px;
+    border: none;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+button {
+    background: white;
+    color: #ff4d6d;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ffe3ea;
+}
+
+h1, h2 {
+    font-family: 'Playfair Display', serif;
+}
+
+.photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin: 15px auto;
+    overflow: hidden;
+    border: 4px solid rgba(255,255,255,0.8);
+}
+
+.photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.heart {
+    position: absolute;
+    color: rgba(255,255,255,0.8);
+    animation: float 6s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); opacity: 0; }
+    50% { opacity: 1; }
+    100% { transform: translateY(-700px); opacity: 0; }
+}
+
+.buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.yes {
+    background: #fff;
+    color: #ff4d6d;
+}
+
+.always {
+    background: transparent;
+    color: white;
+    border: 1px solid white;
+}
+</style>
+</head>
+
+<body>
+
+<!-- Background Music -->
+<audio id="music" loop>
+  <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_58f9c8a1f4.mp3" type="audio/mpeg">
+</audio>
+
+<!-- PASSWORD SCREEN -->
+<div class="card" id="lock">
+    <h1>🔐 For One Heart Only</h1>
+    <p>This page opens only for the girl who owns my heart.</p>
+    <input type="password" id="password" placeholder="Enter the secret">
+    <button onclick="unlock()">Open ❤️</button>
+    <p id="error"></p>
+</div>
+
+<!-- PROPOSAL -->
+<div class="card hidden" id="proposal">
+    <div class="photo">
+        <img src="oliver.jpg" alt="Oliver">
+    </div>
+
+    <h1 id="typing"></h1>
+
+    <p>
+        Every time I look at you,<br>
+        I'm reminded that love is real.<br><br>
+
+        You are my peace,<br>
+        my laughter,<br>
+        my safe place.<br><br>
+
+        This Valentine's Day,<br>
+        I don't want just a moment with you…<br>
+        I want a lifetime.
+    </p>
+
+    <h2>Will you be my Valentine? 💍❤️</h2>
+
+    <div class="buttons">
+        <button class="yes" onclick="answer('yes')">YES 💖</button>
+        <button class="always" onclick="answer('always')">ALWAYS 💍</button>
+    </div>
+
+    <p id="response"></p>
+</div>
+
+<script>
+const correctPassword = "love"; // 🔑 change if you want
+const text = "Oliver… My Heart ❤️";
+let index = 0;
+
+function unlock() {
+    const input = document.getElementById("password").value;
+    if (input === correctPassword) {
+        document.getElementById("lock").classList.add("hidden");
+        document.getElementById("proposal").classList.remove("hidden");
+        document.getElementById("music").play();
+        typeText();
+        createHearts();
+    } else {
+        document.getElementById("error").innerText = "That's not it, my love 💔";
+    }
+}
+
+function typeText() {
+    if (index < text.length) {
+        document.getElementById("typing").innerHTML += text.charAt(index);
+        index++;
+        setTimeout(typeText, 120);
+    }
+}
+
+function createHearts() {
+    for (let i = 0; i < 30; i++) {
+        let heart = document.createElement("div");
+        heart.innerHTML = "❤️";
+        heart.className = "heart";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-20px";
+        heart.style.fontSize = (20 + Math.random() * 25) + "px";
+        heart.style.animationDuration = (4 + Math.random() * 4) + "s";
+        document.body.appendChild(heart);
+    }
+}
+
+function answer(choice) {
+    const response = document.getElementById("response");
+    if (choice === "yes") {
+        response.innerHTML = "You just made my heart the happiest place on earth ❤️🥹";
+    } else {
+        response.innerHTML = "Forever starts now… I love you endlessly 💍❤️";
+  }
+}
+</script>
+
+</body>
+</html>https://dav934-spec.github.io/Valentine/https://dav934-spec.github.io/Valentine/
